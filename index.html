@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
 
         header {
@@ -34,13 +35,19 @@
             text-decoration: none;
         }
 
-        nav a:hover {
-            background-color: #ddd; /* Couleur de fond du menu au survol */
-            color: #333; /* Couleur du texte au survol */
+       nav a:hover {
+            background-color: orange;
         }
 
         section {
             padding: 20px;
+        }
+
+        /* Styles pour les flocons de neige */
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -52,25 +59,44 @@
     </header>
 
     <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#services">Services</a>
+        <a href="Accueil.html">Accueil</a>
+        <a href="#Technologies.html">Technologies</a>
         <a href="#exploration">Exploration</a>
     </nav>
 
-    <section id="accueil">
-        <h2>Accueil</h2>
-        <!-- Contenu de la section Accueil -->
-    </section>
+  
 
-    <section id="services">
-        <h2>Services</h2>
-        <!-- Contenu de la section Services -->
-    </section>
+    <script>
+        // JavaScript pour les flocons de neige
+        document.addEventListener("DOMContentLoaded", function () {
+            createSnowflakes();
+        });
 
-    <section id="exploration">
-        <h2>Exploration</h2>
-        <!-- Contenu de la section Exploration -->
-    </section>
+        function createSnowflakes() {
+            const numberOfSnowflakes = 50;
+
+            for (let i = 0; i < numberOfSnowflakes; i++) {
+                createSnowflake();
+            }
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.innerHTML = "&#10052;"; // Utilisation d'un caractère étoile pour le flocon de neige
+            document.body.appendChild(snowflake);
+
+            const animationDuration = Math.random() * 5 + 5; // Durée de l'animation entre 5 et 10 secondes
+            const startPosition = Math.random() * window.innerWidth;
+
+            snowflake.style.left = startPosition + "px";
+            snowflake.style.animation = `fall ${animationDuration}s linear infinite`;
+
+            setTimeout(() => {
+                document.body.removeChild(snowflake);
+            }, animationDuration * 1000);
+        }
+    </script>
 
 </body>
 
